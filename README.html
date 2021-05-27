@@ -1,0 +1,132 @@
+ <html>
+	<head>
+		<title>ircredirect Documentation</title>
+		<style type='text/css'>
+			<!--
+			body {font-family: sans-serif; background-color: #ffffff; color: #202122; padding: 1em; font-size: 0.875em; line-height: 1.6;}
+			p {margin: 0.5em 0;}
+			h1, h2, h3, h4, h5, h6 {color: #000; overflow: hidden;}
+			h1, h2 {margin: 0 0 0.25em; padding: 0; font-family: 'Linux Libertine','Georgia','Times',serif; line-height: 1.3; border-bottom: 1px solid #a2a9b1;}
+			h1 {font-size: calc(1.8em/0.875); font-weight: normal;}
+			h2 {font-size: 1.5em;font-weight: normal;}
+			code {border-radius: 2px; padding: 1px 4px;}
+			pre, code {background-color: #f8f9fa; color: #000; border: 1px solid #eaecf0;}
+			pre, code, tt, kbd, samp {font-family: monospace,monospace;}
+			a {text-decoration: none; color: #0645ad;}
+			a:hover, a:focus {text-decoration: underline;}
+			a:visited {color:#0b0080}
+			a:active {color:#faa700}
+			-->
+		</style>
+	</head>
+	<body>
+		<h1>ircredirect</h1>
+		<p>
+			<small>
+				Tool created by <a href=https://en.wikipedia.org/wiki/User:Ahecht>Ahecht</a>. Source available at <a href="https://ircredirect.toolforge.org/source.php">https://ircredirect.toolforge.org/source.php</a>
+			</small>
+		<p>
+			The ircredirect tool redirects users to an irc channel on kiwiirc.com with a randomly generated username. The generated username consists of an adjective taken from a list of 20 adjectives, a noun taken from a list of nouns, and a two-digit number. The two digit number and the adjective are issued sequentially, while the noun is chosen randomly from the list.
+		</p>
+		<p>
+			Per <a href="https://phabricator.wikimedia.org/T172612">https://phabricator.wikimedia.org/T172612</a>, user consent must be obtained before redirecting to a third-party server. If user consent was gained on the page linking to the ircredirect tool, add <code>consent=yes</code> to the end of the URL to silenty redirect to kiwiirc.com without displaying the disclaimer, e.g. <code>https://ircredirect.toolforge.org/?consent=yes</code>
+		</p>
+		<p>
+			By default, the script redirects to the Wikipedia Help Channel (<code>wikipedia-en-help</code> on <code>irc.freenode.net</code>). This can be overridden by adding the <code>channel=</code> and <code>server=</code> parameters to the url, e.g. <code>https://ircredirect.toolforge.org/?server=irc.freenode.net&channel=wikipedia-en-help</code>
+		</p>
+		<p>
+			By default, the seed values are taken from at <a href="https://en.wikipedia.org/wiki/Wikipedia:IRC_help_disclaimer/nicks.json">Wikipedia:IRC help disclaimer/nicks.json</a>. This can be changed by adding a <code>baseurl=</code> parameter to the url. The URL should be urlencoded and must begin with "https", e.g. <code>https://ircredirect.toolforge.org/?baseurl=https%3A%2F%2Fen.wikipedia.org%2Fw%2Findex.php%3Ftitle%3DWikipedia%3AIRC_help_disclaimer%2Fnicks%3Faction%3Draw</code>
+		</p>
+		<p>
+			The script will return the text of the redirect URL and other debugging information instead of actually performing the redirect if the <code>debug=</code> parameter is set to any value.
+		</p>
+		<p>
+			The seed value file is a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> file, and should contain a "nouns" <a href="https://www.w3schools.com/js/js_json_objects.asp">object</a> and an "adjectives" <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a>. If the file is not found or not properly formatted, the generated name will default to "WPHelp" followed by a two digit number. An example seed file is shown below:
+		</p>
+		<hr />
+		<xmp>
+{
+    "_readme": "This page is used to generate the usernames created by the ircredirect tool. Please see the documentation at https://ircredirect.toolforge.org/README.html before editing.",
+
+    "_nouns": "The below 'nouns' object contains animal or fruit names, one for each letter of the alphabet.",
+    "nouns": {
+        "A": "Alpaca",
+        "B": "Berry",
+        "C": "Canary",
+        "D": "Durian",
+        "E": "Emu",
+        "F": "Fig",
+        "G": "Grape",
+        "H": "Heron",
+        "I": "Ibex",
+        "J": "Jaguar",
+        "K": "Kiwi",
+        "L": "Lemur",
+        "M": "Melon",
+        "N": "Narwhal",
+        "O": "Ocelot",
+        "P": "Papaya",
+        "Q": "Quetzal",
+        "R": "Rhino",
+        "S": "Stork",
+        "T": "Tiger",
+        "U": "Unicorn",
+        "V": "Vervet",
+        "W": "Walnut",
+        "X": "Xerus",
+        "Y": "Yew",
+        "Z": "Zebra"
+    },
+    "_adjectives": "The below 'adjectives' array contains color and gemstone names, each with a unique starting letter. '''This list must contain exactly 20 items.'''",
+    "adjectives": [
+        "Amber",
+        "Brown",
+        "Cyan",
+        "Diamond",
+        "Emerald",
+        "Green",
+        "Indigo",
+        "Jade",
+        "Khaki",
+        "Lime",
+        "Magenta",
+        "Navy",
+        "Orange",
+        "Purple",
+        "Red",
+        "Silver",
+        "Tan",
+        "White",
+        "Yellow",
+        "Zircon"
+    ]
+}
+		</xmp>
+		<hr />
+		<p>
+			<small>
+				The MIT License
+			</small>
+		</p>
+		<p>
+			<small>
+				Copyright &copy; 2017–2019 <a href="https://en.wikipedia.org/wiki/User:Ahecht">Ahecht</a>
+			</small>
+		</p>
+		<p>
+			<small>
+				Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ 			</small>
+		</p>
+		<p>
+			<small>
+				The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+			</small>
+		</p>
+		<p>
+			<small>
+				THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+			</small>
+		</p>
+	</body>
+</html>
