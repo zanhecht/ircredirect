@@ -32,13 +32,27 @@
 			Per <a href="https://phabricator.wikimedia.org/T172612">https://phabricator.wikimedia.org/T172612</a>, user consent must be obtained before redirecting to a third-party server. If user consent was gained on the page linking to the ircredirect tool, add <code>consent=yes</code> to the end of the URL to silenty redirect to kiwiirc.com without displaying the disclaimer, e.g. <code>https://ircredirect.toolforge.org/?consent=yes</code>
 		</p>
 		<p>
-			By default, the script redirects to the Wikipedia Help Channel (<code>wikipedia-en-help</code> on <code>irc.freenode.net</code>). This can be overridden by adding the <code>channel=</code> and <code>server=</code> parameters to the url, e.g. <code>https://ircredirect.toolforge.org/?server=irc.freenode.net&channel=wikipedia-en-help</code>
+			By default, the script redirects to the Wikipedia Help Channel (<code>wikipedia-en-help</code> on <code>irc.libera.chat</code>). This can be overridden by adding the <code>channel=</code> and <code>server=</code> parameters to the url, e.g. <code>https://ircredirect.toolforge.org/?server=irc.libera.chat&channel=wikipedia-en-help</code>
 		</p>
 		<p>
 			By default, the seed values are taken from at <a href="https://en.wikipedia.org/wiki/Wikipedia:IRC_help_disclaimer/nicks.json">Wikipedia:IRC help disclaimer/nicks.json</a>. This can be changed by adding a <code>baseurl=</code> parameter to the url. The URL should be urlencoded and must begin with "https", e.g. <code>https://ircredirect.toolforge.org/?baseurl=https%3A%2F%2Fen.wikipedia.org%2Fw%2Findex.php%3Ftitle%3DWikipedia%3AIRC_help_disclaimer%2Fnicks%3Faction%3Draw</code>
 		</p>
 		<p>
-			The script will return the text of the redirect URL and other debugging information instead of actually performing the redirect if the <code>debug=</code> parameter is set to any value.
+			Seed value files will only be loaded from the following WMF-owned domains:
+			<ul>
+				<li>mediawiki.org</li>
+				<li>toolforge.org</li>
+				<li>wikibooks.org</li>
+				<li>wikidata.org</li>
+				<li>wikimedia.org</li>
+				<li>wikinews.org</li>
+				<li>wikipedia.org</li>
+				<li>wikiquote.org</li>
+				<li>wikisource.org</li>
+				<li>wikiversity.org</li>
+				<li>wikivoyage.org</li>
+				<li>wiktionary.org</li>
+			</ul>
 		</p>
 		<p>
 			The seed value file is a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> file, and should contain a "nouns" <a href="https://www.w3schools.com/js/js_json_objects.asp">object</a> and an "adjectives" <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a>. If the file is not found or not properly formatted, the generated name will default to "WPHelp" followed by a two digit number. An example seed file is shown below:
@@ -104,13 +118,16 @@
 		</xmp>
 		<hr />
 		<p>
+			The script will return the text of the redirect URL and other debugging information instead of actually performing the redirect if the <code>debug=</code> parameter is set to any value.
+		</p>
+		<p>
 			<small>
 				The MIT License
 			</small>
 		</p>
 		<p>
 			<small>
-				Copyright &copy; 2017–2019 <a href="https://en.wikipedia.org/wiki/User:Ahecht">Ahecht</a>
+				Copyright &copy; 2017–2021 <a href="https://en.wikipedia.org/wiki/User:Ahecht">Ahecht</a>
 			</small>
 		</p>
 		<p>
