@@ -13,9 +13,9 @@ $atoptext = "----<!--ADJECTIVE VALUES ONLY BELOW THIS LINE-->----\n";
 $abottext = "----<!--ADJECTIVE VALUES ONLY ABOVE THIS LINE-->----\n";
 
 if (isset($_GET['baseurl'])) {
-    $baseurl = urldecode($_GET['baseurl']);
+	$baseurl = urldecode($_GET['baseurl']);
 } else {
-    $baseurl = "https://en.wikipedia.org/w/index.php?title=Wikipedia:IRC_help_disclaimer/nicks&action=raw";
+	$baseurl = "https://en.wikipedia.org/w/index.php?title=Wikipedia:IRC_help_disclaimer/nicks&action=raw";
 }
 
 $nicks = file($baseurl);
@@ -34,15 +34,15 @@ if ($nountop === FALSE or $nounbot === FALSE or $adjtop === FALSE or $adjbot ===
 }
 
 if (isset($_GET['channel'])) {
-    $channel = $_GET['channel'];
+	$channel = $_GET['channel'];
 } else {
-    $channel = 'wikipedia-en-help';
+	$channel = 'wikipedia-en-help';
 }
 
 if (isset($_GET['server'])) {
-    $server = $_GET['server'];
+	$server = $_GET['server'];
 } else {
-    $server = 'irc.freenode.net';
+	$server = 'irc.freenode.net';
 }
 
 if (isset($_GET['debug'])) {
@@ -57,18 +57,14 @@ if (isset($_GET['debug'])) {
 				<link rel=\"StyleSheet\" href=\"resources/mediawiki.ui.button.css\" type=\"text/css\" media=\"screen\" />
 				<style type=\"text/css\">
 					<!--
-					body {margin:0; padding:0; border:0; width:100%; background:#fff; min-width:600px; font-size:90%; font-family: sans-serif;}
-					h1, h2, h3 {margin:.8em 0 .2em 0;padding:0;}
-					h2 {border-bottom: 2px solid #1b61dd;}
+					body {font-size:90%; font-family: sans-serif;}
+					h1 {margin:.8em 0 .2em 0;padding:0;}
 					p {margin:.4em 0 .8em 0;padding:0;}
-					th, td {padding: 7.5px; width: 50%; text-align: left; vertical-align: top;}
-					input, label, div {display:inline-block !important;}
 					code {font-family: monospace !important;}
 					a {text-decoration: none; color: #0645ad;}
 					a:hover, a:focus {text-decoration: underline;}
 					a:visited {color:#0b0080}
 					a:active {color:#faa700}
-					input:disabled + label {color: #949494}
 					-->
 				</style>
 				<title>IRC Redirect</title>
@@ -76,12 +72,12 @@ if (isset($_GET['debug'])) {
 			<body>
 				<h1 style=\"text-align: center;\">IRC Redirect</h1>
 				<p style=\"text-align: center;\">Click on the button below to continue to <a href=https://kiwiirc.com/client/" . urlencode($server) . "/" . urlencode($channel) . "?nick=" . urlencode($nick) . ">https://kiwiirc.com/client/" . urlencode($server) . "/" . urlencode($channel) . "?nick=" . urlencode($nick) . "</a>.<br />
-                This is a third-party site not run by the Wikimedia Foundation, and may have a different privacy policy.</p>
-				<form method=\"POST\" action=\"https://kiwiirc.com/client/" . urlencode($server) . "/" . urlencode($channel) . "?nick=" . urlencode($nick) . "\" style=\"margin: auto; text-align: center;\">
-					<input type=\"submit\"  value=\"Continue\" class=\"mw-ui-button mw-ui-progressive\" />
-				</form>
-                <p style=\"text-align: center;\">&nbsp;</p>
-                <p style=\"text-align: center;\"><small>To avoid seeing this message in the future, add <span style=\"font-family: monospace;\">&consent=yes</span> to the end of the URL.</small></p>
+				This is a third-party site not run by the Wikimedia Foundation, and may have a different privacy policy.</p>
+				<p style=\"text-align: center;\"><a href=\"https://kiwiirc.com/client/" . urlencode($server) . "/" . urlencode($channel) . "?nick=" . urlencode($nick) . "\">
+					<span class=\"mw-ui-button mw-ui-progressive\">Continue to #" . $channel . " at kiwiirc</span>
+				</a></p>
+				<p style=\"text-align: center;\">&nbsp;</p>
+				<p style=\"text-align: center; font-size: smaller;\">To avoid seeing this message in the future, add <code>&consent=yes</code> to the end of the URL. <a href=\"README.html\">View documentation</a>.</p>
 			</body>
 		</html>");
 }
