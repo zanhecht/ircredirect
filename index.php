@@ -14,10 +14,14 @@ if ($num < 99) {
 $redisClient -> set($redisKey, $num);
 $redisClient -> close();
 
+$lang = isset($_GET['lang']) ? $_GET['lang'] : 'en';
+$project = isset($_GET['project']) ? $_GET['project'] : 'wikipedia';
+
 if (isset($_GET['baseurl'])) {
 	$baseurl = urldecode($_GET['baseurl']);
 } else {
-	$baseurl = 'https://en.wikipedia.org/w/index.php?title=Wikipedia:IRC_help_disclaimer/nicks.json&action=raw';
+	$title = isset($_GET['title']) ? $_GET['title'] : 'Wikipedia:IRC_help_disclaimer/nicks.json';
+	$baseurl = "https://$lang.$project.org/w/index.php?title=$title&action=raw";
 }
 
 if (preg_match("/^https:\/\/[^\/]*\.?(mediawiki|toolforge|wik(i(books|data|[mp]edia|news|quote|source|versity|voyage)|tionary)).org\//i", $baseurl)) {
@@ -38,8 +42,10 @@ if ($jsonFile === FALSE or $nicks === FALSE or is_array($nicks) === FALSE or (is
 
 if (isset($_GET['channel'])) {
 	$channel = $_GET['channel'];
+} elseif (isset($_GET['lang']) or isset($_GET['project'])) {
+	$channel = "$project-$lang";
 } else {
-	$channel = 'wikipedia-en-help';
+	$channel = 'wikipedia';
 }
 
 if (isset($_GET['server'])) {
@@ -70,7 +76,7 @@ if (isset($_GET['debug'])) {
 } elseif (isset($_GET['consent'])) {
 	header("Location: $targetURL");
 } else {
-	$chanhtml = htmlspecialchars($channel).' on '.htmlspecialchars($server);
+	$chanhtml = htmlspecialchars("#$channel on $server");
 	echo("<!DOCTYPE html>
 		<html lang='en'>
 			<head>
@@ -99,7 +105,7 @@ if (isset($_GET['debug'])) {
 				<p style='text-align: center;'>Click on the button below to continue to <a href=$targetURL>$targetURL</a>.<br />
 				This is a third-party site not run by the Wikimedia Foundation, and may have a different privacy policy.</p>
 				<p style='text-align: center;'><a href='$targetURL'>
-					<span class='mw-ui-button mw-ui-progressive'>Continue to #$chanhtml at kiwiirc</span>
+					<span class='mw-ui-button mw-ui-progressive'>Continue to $chanhtml at kiwiirc</span>
 				</a></p>
 				<p style='text-align: center;'>&nbsp;</p>
 				<p style='text-align: center; font-size: smaller;'>To avoid seeing this message in the future, add <code>&consent=yes</code> to the end of the URL. <a href='README.html'>View documentation</a>.</p>
