@@ -1,0 +1,90 @@
+.mw-ui-button {
+	font-family:inherit;
+	font-size:1em;
+	display:inline-block;
+	min-width:4em;
+	max-width:28.75em;
+	padding:.5em 1em;
+	margin:0;
+	border-radius:2px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-appearance:none;
+	*display:inline;
+	zoom:1;
+	vertical-align:middle;
+	background:#ffffff;
+	color:#555555;
+	border:1px solid #cccccc;
+	text-align:center;
+	font-weight:bold;
+	cursor:pointer;
+	}
+
+.mw-ui-button:hover {background-color:#cccccc;}
+
+.mw-ui-button:focus {
+	border-color:#ffffff;
+	box-shadow:0 0 0 1px #cccccc;
+	outline:none;
+	}
+
+.mw-ui-button:focus::-moz-focus-inner {border-color:transparent;}
+
+.mw-ui-button:active,.mw-ui-button.is-on,.mw-ui-button.mw-ui-checked {
+	background:#777777;
+	box-shadow:none;
+	}
+
+.mw-ui-button:hover,.mw-ui-button:active,.mw-ui-button:visited {color:#555555;}
+
+.mw-ui-button:focus {background-color:#cccccc;}
+
+.mw-ui-button:disabled {color:#cccccc;}
+
+.mw-ui-button:disabled:hover,.mw-ui-button:disabled:active {
+	background:#ffffff;
+	box-shadow:none;
+	}
+
+.mw-ui-button:disabled {
+	text-shadow:none;
+	cursor:default;
+	}
+
+.mw-ui-button.mw-ui-progressive {
+	background:#347bff;
+	color:#fff;
+	border:1px solid #347bff;
+	text-shadow:0 1px rgba(0,0,0,0.1);
+	}
+
+.mw-ui-button.mw-ui-progressive:hover {background-color:#2962cc;}
+
+.mw-ui-button.mw-ui-progressive:focus {
+	border-color:#ffffff;
+	box-shadow:0 0 0 1px #2962cc;
+	outline:none;
+	}
+
+.mw-ui-button.mw-ui-progressive:focus::-moz-focus-inner {border-color:transparent;}
+
+.mw-ui-button.mw-ui-progressive:active,.mw-ui-button.mw-ui-progressive.is-on,.mw-ui-button.mw-ui-progressive.mw-ui-checked {
+	background:#2962cc;
+	box-shadow:none;
+	}
+
+.mw-ui-button.mw-ui-progressive:disabled {
+	background:#dddddd;
+	border-color:#dddddd;
+	}
+
+.mw-ui-button.mw-ui-progressive:disabled:hover,.mw-ui-button.mw-ui-progressive:disabled:active,.mw-ui-button.mw-ui-progressive:disabled.mw-ui-checked {box-shadow:none;}
+
+a.mw-ui-button {
+	text-decoration:none;
+	line-height:normal;
+	}
+
+a.mw-ui-button:hover,a.mw-ui-button:focus {text-decoration:none;}
