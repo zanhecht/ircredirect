@@ -32,10 +32,13 @@
 			Per <a href="https://phabricator.wikimedia.org/T172612">https://phabricator.wikimedia.org/T172612</a>, user consent must be obtained before redirecting to a third-party server. If user consent was gained on the page linking to the ircredirect tool, add <code>consent=yes</code> to the end of the URL to silenty redirect to kiwiirc.com without displaying the disclaimer, e.g. <code>https://ircredirect.toolforge.org/?consent=yes</code>
 		</p>
 		<p>
-			By default, the script redirects to the Wikipedia Help Channel (<code>wikipedia-en-help</code> on <code>irc.libera.chat</code>). This can be overridden by adding the <code>channel=</code> and <code>server=</code> parameters to the url, e.g. <code>https://ircredirect.toolforge.org/?server=irc.libera.chat&channel=wikipedia-en-help</code>
+			By default, the script redirects to the main Wikipedia channel (<code>#wikipedia</code> on <code>irc.libera.chat</code>). This can be overridden by adding the <code>channel=</code> and <code>server=</code> parameters to the url, e.g. <code>https://ircredirect.toolforge.org/?server=irc.libera.chat&channel=wikipedia-en-help</code>
 		</p>
 		<p>
-			By default, the seed values are taken from at <a href="https://en.wikipedia.org/wiki/Wikipedia:IRC_help_disclaimer/nicks.json">Wikipedia:IRC help disclaimer/nicks.json</a>. This can be changed by adding a <code>baseurl=</code> parameter to the url. The URL should be urlencoded and must begin with "https", e.g. <code>https://ircredirect.toolforge.org/?baseurl=https%3A%2F%2Fen.wikipedia.org%2Fw%2Findex.php%3Ftitle%3DWikipedia%3AIRC_help_disclaimer%2Fnicks%3Faction%3Draw</code>
+			By default, the seed values are taken from at <a href="https://en.wikipedia.org/wiki/Wikipedia:IRC_help_disclaimer/nicks.json">Wikipedia:IRC help disclaimer/nicks.json</a>. This can be changed by adding the <code>lang=</code>, <code>project=</code>, and/or <code>title=</code> parameters, e.g. <code>https://ircredirect.toolforge.org/?lang=en&project=wikipedia&title=Wikipedia:IRC_help_disclaimer/nicks.json</code>. <code>lang=</code>, <code>project=</code>, and/or <code>title=</code> default to "en", "wikipedia", and "Wikipedia:IRC help disclaimer/nicks.json", respectively, if omitted. Using <code>lang=</code> and <code>project=</code> will also change the default IRC channel as appropriate if <code>channel=</code> is not specified. 
+		</p>
+		<p>
+			Alternatively, the <code>baseurl=</code> parameter can be added to the url to represent the full URL of the plain text seed file. The URL should be urlencoded and must begin with "https", e.g. <code>https://ircredirect.toolforge.org/?baseurl=https%3A%2F%2Fen.wikipedia.org%2Fw%2Findex.php%3Ftitle%3DWikipedia%3AIRC_help_disclaimer%2Fnicks.json%3Faction%3Draw</code>
 		</p>
 		<p>
 			Seed value files will only be loaded from the following WMF-owned domains:
@@ -60,60 +63,59 @@
 		<hr />
 		<xmp>
 {
-    "_readme": "This page is used to generate the usernames created by the ircredirect tool. Please see the documentation at https://ircredirect.toolforge.org/README.html before editing.",
-
-    "_nouns": "The below 'nouns' object contains animal or fruit names, one for each letter of the alphabet.",
-    "nouns": {
-        "A": "Alpaca",
-        "B": "Berry",
-        "C": "Canary",
-        "D": "Durian",
-        "E": "Emu",
-        "F": "Fig",
-        "G": "Grape",
-        "H": "Heron",
-        "I": "Ibex",
-        "J": "Jaguar",
-        "K": "Kiwi",
-        "L": "Lemur",
-        "M": "Melon",
-        "N": "Narwhal",
-        "O": "Ocelot",
-        "P": "Papaya",
-        "Q": "Quetzal",
-        "R": "Rhino",
-        "S": "Stork",
-        "T": "Tiger",
-        "U": "Unicorn",
-        "V": "Vervet",
-        "W": "Walnut",
-        "X": "Xerus",
-        "Y": "Yew",
-        "Z": "Zebra"
-    },
-    "_adjectives": "The below 'adjectives' array contains color and gemstone names, each with a unique starting letter. '''This list must contain exactly 20 items.'''",
-    "adjectives": [
-        "Amber",
-        "Brown",
-        "Cyan",
-        "Diamond",
-        "Emerald",
-        "Green",
-        "Indigo",
-        "Jade",
-        "Khaki",
-        "Lime",
-        "Magenta",
-        "Navy",
-        "Orange",
-        "Purple",
-        "Red",
-        "Silver",
-        "Tan",
-        "White",
-        "Yellow",
-        "Zircon"
-    ]
+	"_readme": "This page is used to generate the usernames created by the ircredirect tool. Please see the documentation at https://ircredirect.toolforge.org/README.html before editing.",
+	"_nouns": "The below 'nouns' object contains animal or fruit names, one for each letter of the alphabet.",
+	"nouns": {
+		"A": "Alpaca",
+		"B": "Berry",
+		"C": "Canary",
+		"D": "Durian",
+		"E": "Emu",
+		"F": "Fig",
+		"G": "Grape",
+		"H": "Heron",
+		"I": "Ibex",
+		"J": "Jaguar",
+		"K": "Kiwi",
+		"L": "Lemur",
+		"M": "Melon",
+		"N": "Narwhal",
+		"O": "Ocelot",
+		"P": "Papaya",
+		"Q": "Quetzal",
+		"R": "Rhino",
+		"S": "Stork",
+		"T": "Tiger",
+		"U": "Unicorn",
+		"V": "Vervet",
+		"W": "Walnut",
+		"X": "Xerus",
+		"Y": "Yew",
+		"Z": "Zebra"
+	},
+	"_adjectives": "The below 'adjectives' array contains color and gemstone names, each with a unique starting letter. '''This list must contain exactly 20 items.'''",
+	"adjectives": [
+		"Amber",
+		"Brown",
+		"Cyan",
+		"Diamond",
+		"Emerald",
+		"Green",
+		"Indigo",
+		"Jade",
+		"Khaki",
+		"Lime",
+		"Magenta",
+		"Navy",
+		"Orange",
+		"Purple",
+		"Red",
+		"Silver",
+		"Tan",
+		"Violet",
+		"White",
+		"Yellow"
+	]
 }
 		</xmp>
 		<hr />
