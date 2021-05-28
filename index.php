@@ -45,7 +45,7 @@ if (isset($_GET['channel'])) {
 } elseif (isset($_GET['lang']) or isset($_GET['project'])) {
 	$channel = "$project-$lang";
 } else {
-	$channel = 'wikipedia';
+	$channel = $project;
 }
 
 if (isset($_GET['server'])) {
