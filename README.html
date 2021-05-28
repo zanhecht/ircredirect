@@ -23,7 +23,7 @@
 		<h1>ircredirect</h1>
 		<p>
 			<small>
-				Tool created by <a href=https://en.wikipedia.org/wiki/User:Ahecht>Ahecht</a>. Source available at <a href="https://ircredirect.toolforge.org/source.php">https://ircredirect.toolforge.org/source.php</a>
+				Tool created by <a href=https://en.wikipedia.org/wiki/User:Ahecht>Ahecht</a>. Source available at <a href="source.php">https://ircredirect.toolforge.org/source.php</a> or on <a href="https://github.com/zanhecht/ircredirect/blob/main/index.php">github</a>.
 			</small>
 		<p>
 			The ircredirect tool redirects users to an irc channel on kiwiirc.com with a randomly generated username. The generated username consists of an adjective taken from a list of 20 adjectives, a noun taken from a list of nouns, and a two-digit number. The two digit number and the adjective are issued sequentially, while the noun is chosen randomly from the list.
@@ -58,70 +58,12 @@
 			</ul>
 		</p>
 		<p>
-			The seed value file is a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> file, and should contain a "nouns" <a href="https://www.w3schools.com/js/js_json_objects.asp">object</a> and an "adjectives" <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a>. If the file is not found or not properly formatted, the generated name will default to "WPHelp" followed by a two digit number. An example seed file is shown below:
+			The seed value file is a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> file, and should contain a "nouns" <a href="https://www.w3schools.com/js/js_json_objects.asp">object</a> and an "adjectives" <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a>. If the file is not found or not properly formatted, the generated name will default to "WPHelp" followed by a two digit number. An example seed file can be found <a href="nicks.json">here</a>.
 		</p>
-		<hr />
-		<xmp>
-{
-	"_readme": "This page is used to generate the usernames created by the ircredirect tool. Please see the documentation at https://ircredirect.toolforge.org/README.html before editing.",
-	"_nouns": "The below 'nouns' object contains animal or fruit names, one for each letter of the alphabet.",
-	"nouns": {
-		"A": "Alpaca",
-		"B": "Berry",
-		"C": "Canary",
-		"D": "Durian",
-		"E": "Emu",
-		"F": "Fig",
-		"G": "Grape",
-		"H": "Heron",
-		"I": "Ibex",
-		"J": "Jaguar",
-		"K": "Kiwi",
-		"L": "Lemur",
-		"M": "Melon",
-		"N": "Narwhal",
-		"O": "Ocelot",
-		"P": "Papaya",
-		"Q": "Quetzal",
-		"R": "Rhino",
-		"S": "Stork",
-		"T": "Tiger",
-		"U": "Unicorn",
-		"V": "Vervet",
-		"W": "Walnut",
-		"X": "Xerus",
-		"Y": "Yew",
-		"Z": "Zebra"
-	},
-	"_adjectives": "The below 'adjectives' array contains color and gemstone names, each with a unique starting letter. '''This list must contain exactly 20 items.'''",
-	"adjectives": [
-		"Amber",
-		"Brown",
-		"Cyan",
-		"Diamond",
-		"Emerald",
-		"Green",
-		"Indigo",
-		"Jade",
-		"Khaki",
-		"Lime",
-		"Magenta",
-		"Navy",
-		"Orange",
-		"Purple",
-		"Red",
-		"Silver",
-		"Tan",
-		"Violet",
-		"White",
-		"Yellow"
-	]
-}
-		</xmp>
-		<hr />
 		<p>
 			The script will return the text of the redirect URL and other debugging information instead of actually performing the redirect if the <code>debug=</code> parameter is set to any value.
 		</p>
+		<hr />
 		<p>
 			<small>
 				The MIT License
