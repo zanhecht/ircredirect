@@ -81,7 +81,7 @@ if (isset($_GET['debug'])) {
 		<html lang='en'>
 			<head>
 				<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-				<link rel='StyleSheet' href='resources/mediawiki.ui.button.css' type='text/css' media='screen' />
+				<link rel='StyleSheet' href='/resources/mediawiki.ui.button.css' type='text/css' media='screen' />
 				<style type='text/css'>
 					<!--
 					body {font-family: sans-serif; background-color: #ffffff; color: #202122; padding: 1em; font-size: 0.875em; line-height: 1.6;}
