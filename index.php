@@ -74,9 +74,10 @@ if (isset($_GET['debug'])) {
 		echo('is_array($nicks) === FALSE, $nicks = '.htmlspecialchars($nicks).'<hr>');
 	}
 } elseif (isset($_GET['consent'])) {
-	header("Location: $targetURL");
+	header('Location: '.htmlspecialchars($targetURL));
 } else {
 	$chanhtml = htmlspecialchars("#$channel on $server");
+	$targetURL = htmlspecialchars($targetURL);
 	echo("<!DOCTYPE html>
 		<html lang='en'>
 			<head>
@@ -110,6 +111,9 @@ if (isset($_GET['debug'])) {
 				<p style='text-align: center;'>&nbsp;</p>
 				<p style='text-align: center; font-size: smaller;'>To avoid seeing this message in the future, add <code>&consent=yes</code> to the end of the URL. <a href='/README.html'>View documentation</a>.</p>
 			</body>
+			<!-- ircredirect 8.3.2
+			Copyright (c) 2017–2021 Ahecht (https://en.wikipedia.org/wiki/User:Ahecht)
+			Provided under the MIT License (see documentation) -->
 		</html>");
 }
 
