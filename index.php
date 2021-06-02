@@ -23,7 +23,6 @@ if (isset($_GET['baseurl'])) {
 	$title = isset($_GET['title']) ? urlencode($_GET['title']) : 'Wikipedia:IRC_help_disclaimer/nicks.json';
 	$baseurl = "https://$lang.$project.org/w/index.php?title=$title&action=raw";
 }
-[a-zA-Z
 
 if (preg_match("/^https:\/\/[a-z\-]*\.?(mediawiki|toolforge|wik(i(books|data|[mp]edia|news|quote|source|versity|voyage)|tionary)).org\//i", $baseurl)) {
 	$jsonFile = file_get_contents($baseurl);
