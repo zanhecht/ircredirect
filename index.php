@@ -20,11 +20,12 @@ $project = isset($_GET['project']) ? $_GET['project'] : 'wikipedia';
 if (isset($_GET['baseurl'])) {
 	$baseurl = urldecode($_GET['baseurl']);
 } else {
-	$title = isset($_GET['title']) ? $_GET['title'] : 'Wikipedia:IRC_help_disclaimer/nicks.json';
+	$title = isset($_GET['title']) ? urlencode($_GET['title']) : 'Wikipedia:IRC_help_disclaimer/nicks.json';
 	$baseurl = "https://$lang.$project.org/w/index.php?title=$title&action=raw";
 }
+[a-zA-Z
 
-if (preg_match("/^https:\/\/[^\/]*\.?(mediawiki|toolforge|wik(i(books|data|[mp]edia|news|quote|source|versity|voyage)|tionary)).org\//i", $baseurl)) {
+if (preg_match("/^https:\/\/[a-z\-]*\.?(mediawiki|toolforge|wik(i(books|data|[mp]edia|news|quote|source|versity|voyage)|tionary)).org\//i", $baseurl)) {
 	$jsonFile = file_get_contents($baseurl);
 } else {
 	$jsonFile = FALSE;
@@ -108,7 +109,7 @@ if (isset($_GET['debug'])) {
 					<span class='mw-ui-button mw-ui-progressive'>Continue to $chanhtml at kiwiirc</span>
 				</a></p>
 				<p style='text-align: center;'>&nbsp;</p>
-				<p style='text-align: center; font-size: smaller;'>To avoid seeing this message in the future, add <code>&consent=yes</code> to the end of the URL. <a href='README.html'>View documentation</a>.</p>
+				<p style='text-align: center; font-size: smaller;'>To avoid seeing this message in the future, add <code>&consent=yes</code> to the end of the URL. <a href='/README.html'>View documentation</a>.</p>
 			</body>
 		</html>");
 }
