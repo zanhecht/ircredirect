@@ -48,13 +48,13 @@ if (isset($_GET['channel'])) {
 	$channel = "$project-$lang-help";
 }
 
-if (isset($_GET['server'])) {
+if (isset($_GET['server']) && $_GET['server'] !== 'irc.libera.chat') {
 	$server = $_GET['server'];
+	$targetURL = 'https://kiwiirc.com/nextclient/' . urlencode($server) . '/' . urlencode($channel) . '?nick=' . urlencode($nick);
 } else {
 	$server = 'irc.libera.chat';
+	$targetURL = 'https://web.libera.chat/?nick=' . urlencode($nick) . '#' . urlencode($channel);
 }
-
-$targetURL = 'https://kiwiirc.com/nextclient/' . urlencode($server) . '/' . urlencode($channel) . '?nick=' . urlencode($nick);
 
 if (isset($_GET['debug'])) {
 	echo('Location: '.htmlspecialchars($targetURL).'<hr>');
